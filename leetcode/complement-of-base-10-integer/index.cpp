@@ -19,12 +19,28 @@ int bitwiseComplement(int x) {
     return res;
 }
 
+int bitwiseComplementUsingMask(int x) {
+    int n = x;
+    int mask = 0;
+
+    if(x == 0) return 1;
+
+    while(n!=0) {
+        mask = mask << 1 | 1;
+        n = n >> 1;
+    }
+
+    int res = ~x & mask;
+
+    return res;
+}
+
 int main() {
 
     int n;
     cin >> n; 
 
-    cout << bitwiseComplement(n);
+    cout << bitwiseComplementUsingMask(n);
 } 
 
 // 1009
